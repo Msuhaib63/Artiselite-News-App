@@ -56,8 +56,10 @@ const NewsList = (props) => {
                 ))}
             </Row>
 
-            <CustomPagination currentPage = {currentPage} totalPages={totalPages} onPageChange={onPageChange}/>
-        </Container>
+            <div className="mt-4">
+                <CustomPagination currentPage={currentPage} totalPages={totalPages} onPageChange={onPageChange} />
+            </div>
+            </Container>
     );
 };
 

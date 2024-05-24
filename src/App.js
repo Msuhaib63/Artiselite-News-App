@@ -96,7 +96,7 @@ function App() {
                         <Nav className="ms-auto">
                             <Form onSubmit={handleSearch} className="d-flex">
                                 <FormControl type="text" placeholder="Search" className="me-2" name="search" />
-                                <Button variant="transparent" type="submit" style={{ color: "white" }}>
+                                <Button variant="transparent" type="submit" style={{ color: "white", backgroundColor: "blue" }}>
                                     Search
                                 </Button>
                             </Form>
@@ -105,6 +105,9 @@ function App() {
                 </Container>
             </Navbar>
 
+            <h3 className="latest-news-heading text-center mb-4">
+                Latest <span className="badge bg-danger">News</span>
+            </h3>
             <Container>
                 <NewsList category={category} searchTerm={searchTerm} />
             </Container>
