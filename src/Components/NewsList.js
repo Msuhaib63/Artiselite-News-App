@@ -49,6 +49,12 @@ const NewsList = (props) => {
                             <Card.Body>
                                 <Card.Title>{article.title ? article.title.slice(0, 50) : "No title available"}</Card.Title>
                                 <Card.Text>{article.description ? article.description.slice(0, 90) : "No content available"}</Card.Text>
+                                <Card.Text>
+                                    <small className="text-muted">
+                                        Source: {article.source?.name || "Unknown"}<br/>
+                                        Published: {new Date(article.publishedAt).toLocaleDateString() || "Unknown"}
+                                    </small>
+                                </Card.Text>
                                 <Card.Link href={article.url} target="_blank" rel="noopener noreferrer">Read More</Card.Link>
                             </Card.Body>
                         </Card>
