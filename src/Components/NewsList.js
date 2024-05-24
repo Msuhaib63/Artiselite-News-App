@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import useNewsData from "../Hooks/useNewsData";
 import CustomPagination from "./CustomPaginations";
+import reactLogo from '../Assets/react.svg';
 
 const NewsList = (props) => {
     const {category, searchTerm} = props;
@@ -20,6 +21,10 @@ const NewsList = (props) => {
         return <div>Error: {error.message}</div>;
     }
 
+    if (!newsData) {
+        return <div>No data available</div>; // or some other fallback
+      }
+
     const totalArticles = newsData.length;
     const totalPages = Math.ceil(totalArticles / pageSize);
     const startIndex = (currentPage-1) * pageSize;
@@ -32,9 +37,15 @@ const NewsList = (props) => {
                 {currentArticles?.map((article) => (
                     <Col xs={12} ms={6} lg={4} key={article.url}>
                         <Card>
-                            {article.urlToImage && (
-                                <Card.Img variant="top" src={article.urlToImage} />
-                            )}
+                                {article.urlToImage ? (
+                                    <Card.Img variant="top" src={article.urlToImage} />
+                                ) : (
+                                    <Card.Img
+                                        className="w-full h-20 object-cover"
+                                        src={reactLogo} // You need to provide the path to your default image here
+                                        alt="Default Image"
+                                    />
+                                )}
                             <Card.Body>
                                 <Card.Title>{article.title ? article.title.slice(0, 50) : "No title available"}</Card.Title>
                                 <Card.Text>{article.description ? article.description.slice(0, 90) : "No content available"}</Card.Text>
